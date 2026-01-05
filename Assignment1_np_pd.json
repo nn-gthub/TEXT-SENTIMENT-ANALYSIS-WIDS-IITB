@@ -1,0 +1,381 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "7fbd32a8",
+   "metadata": {},
+   "source": [
+    "# Python Fundamentals: Lists and Dictionaries\n",
+    "\n",
+    "Below are examples demonstrating the differences between lists (ordered collections) and dictionaries (key-value pairs), along with their access methods."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7f29f013",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# String concatenation to format the output string\n",
+    "name = \"Alice\"\n",
+    "age = \"23\"\n",
+    "\n",
+    "print(\"My name is \" + name + \" and I am \" + age + \" years old.\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "cbf1185f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "numbers = [10, 20, 30, 40, 50]\n",
+    "\n",
+    "# Appending a new element\n",
+    "numbers.append(60)\n",
+    "print(\"After append:\", numbers)\n",
+    "\n",
+    "# Removing a specific element by value\n",
+    "numbers.remove(20)\n",
+    "print(\"After remove:\", numbers)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d92600b8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Iterating through the list using a for loop\n",
+    "fruits = [\"apple\", \"banana\", \"mango\", \"orange\"]\n",
+    "\n",
+    "for item in fruits:\n",
+    "    print(item)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "babc925b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Simple function to calculate the square of a number\n",
+    "def square(num):\n",
+    "    return num * num\n",
+    "\n",
+    "print(square(5))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "10fbb3d3",
+   "metadata": {},
+   "source": [
+    "### **Numpy: Initializing Arrays**\n",
+    "Creating a $2\\times3$ array manually using `np.array`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f31274ec",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "# Initializing the array with specific values\n",
+    "arr = np.array([[1, 2, 4],\n",
+    "                [7, 13, 21]])\n",
+    "\n",
+    "print(arr)\n",
+    "print(\"Shape:\", arr.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "73eca98e",
+   "metadata": {},
+   "source": [
+    "The `shape` property confirms the dimensions of the array."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0429882b",
+   "metadata": {
+    "vscode": {
+     "languageId": "bat"
+    }
+   },
+   "source": [
+    "**Random Initialization**\n",
+    "Initializing an array `x` with random values using the specified variables for dimensions."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "57fbd9cb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "n_rows = 2\n",
+    "n_columns = 3\n",
+    "\n",
+    "# Generating random data for dimensions (2, 3)\n",
+    "x = np.random.randn(n_rows, n_columns)\n",
+    "\n",
+    "print(x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "226315eb",
+   "metadata": {},
+   "source": [
+    "**Zero and One Arrays**\n",
+    "Creating 3D arrays filled with zeros and ones respectively."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "edafcf80",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Array of zeros\n",
+    "ZERO_ARR = np.zeros((4, 5, 2))\n",
+    "print(\"Zeros Array:\\n\", ZERO_ARR)\n",
+    "\n",
+    "# Array of ones\n",
+    "ONE_ARR = np.ones((4, 5, 2))\n",
+    "print(\"Ones Array:\\n\", ONE_ARR)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7b63b066",
+   "metadata": {},
+   "source": [
+    "## Indexing and Slicing"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b3fb3dba",
+   "metadata": {},
+   "source": [
+    "### **Efficiency Note**\n",
+    "Using `array[i, j]` is preferred over `array[i][j]` for better performance and cleaner syntax in NumPy."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "599f895b",
+   "metadata": {},
+   "source": [
+    "**Slicing Implementations**\n",
+    "Demonstrating slicing using `[start:end:step]`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1b1ac8b5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x = np.array([4, 1, 5, 6, 11])\n",
+    "\n",
+    "# Extracting the middle 3 elements (indices 1 to 3)\n",
+    "y = x[1:4]\n",
+    "print(\"Middle slice:\", y)\n",
+    "\n",
+    "z = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])\n",
+    "\n",
+    "# Selecting every second element (alternating)\n",
+    "w = z[::2]\n",
+    "print(\"Alternating slice:\", w)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d074ed51",
+   "metadata": {},
+   "source": [
+    "**2D Array Slicing**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4377896c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "arr_2d = np.array([[4, 5, 2],\n",
+    "                   [3, 7, 9],\n",
+    "                   [1, 4, 5],\n",
+    "                   [6, 6, 1]])\n",
+    "\n",
+    "# Slicing to get the top 3 rows and columns from index 1 onwards\n",
+    "sliced_arr_2d = arr_2d[:3, 1:]\n",
+    "\n",
+    "print(sliced_arr_2d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e61407e0",
+   "metadata": {},
+   "source": [
+    "# Pandas: Data Manipulation"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "82b66957",
+   "metadata": {},
+   "source": [
+    "### **loc vs iloc**\n",
+    "\n",
+    "- `df.loc[]`: Label-based selection. The end bound is **inclusive**.\n",
+    "- `df.iloc[]`: Integer-position based selection. The end bound is **exclusive** (standard Python behavior)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7f89e941",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "# 1. DataFrame from a simple list\n",
+    "lst = ['Geeks', 'For', 'Geeks', 'is', 'portal', 'for', 'Geeks']\n",
+    "df = pd.DataFrame(lst, columns=['Words'])\n",
+    "print(df)\n",
+    "\n",
+    "# 2. DataFrame from a dictionary\n",
+    "dict_data = {'name':[\"aparna\", \"pankaj\", \"sudhir\", \"Geeku\"],\n",
+    "             'degree': [\"MBA\", \"BCA\", \"M.Tech\", \"MBA\"],\n",
+    "             'score':[90, 40, 80, 98]}\n",
+    "\n",
+    "df2 = pd.DataFrame(dict_data)\n",
+    "print(df2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d23b0d94",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "data = {'Name': ['John', 'Alice', 'Bob', 'Eve', 'Charlie'], \n",
+    "        'Age': [25, 30, 22, 35, 28], \n",
+    "        'Gender': ['Male', 'Female', 'Male', 'Female', 'Male'], \n",
+    "        'Salary': [50000, 55000, 40000, 70000, 48000]}\n",
+    "\n",
+    "data_df = pd.DataFrame(data)\n",
+    "\n",
+    "# Accessing a single column (Series)\n",
+    "age_col = data_df['Age']\n",
+    "print(\"Age Column:\\n\", age_col)\n",
+    "\n",
+    "# Using loc to access specific rows (0-2 inclusive) and columns\n",
+    "subset = data_df.loc[0:2, ['Name', 'Age']]\n",
+    "print(\"\\nSubset:\\n\", subset)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5436c550",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "player_list = [['M.S.Dhoni', 36, 75, 5428000],\n",
+    "               ['A.B.D Villers', 38, 74, 3428000],\n",
+    "               ['V.Kohli', 31, 70, 8428000],\n",
+    "               ['S.Smith', 34, 80, 4428000],\n",
+    "               ['C.Gayle', 40, 100, 4528000],\n",
+    "               ['J.Root', 33, 72, 7028000],\n",
+    "               ['K.Peterson', 42, 85, 2528000]]\n",
+    "\n",
+    "players_df = pd.DataFrame(player_list, columns=['Name', 'Age', 'Weight', 'Salary'])\n",
+    "print(players_df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "411b10a7",
+   "metadata": {},
+   "source": [
+    "**Dropping Columns**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "204ff324",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Removing the 'Salary' column (the last column) using iloc slicing\n",
+    "df_without_salary = data_df.iloc[:, :-1] \n",
+    "print(df_without_salary)\n",
+    "\n",
+    "# Updating the main dataframe\n",
+    "data_df = df_without_salary"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "fa775bff",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Locating the specific value for 'C.Gayle' using conditional indexing\n",
+    "# Step 1: Find the index of the row\n",
+    "row_idx = players_df[players_df['Name'] == 'C.Gayle'].index[0]\n",
+    "\n",
+    "# Step 2: Find the index of the column\n",
+    "col_idx = players_df.columns.get_loc('Weight')\n",
+    "\n",
+    "# Step 3: Access using iloc\n",
+    "weight_cgayle = players_df.iloc[row_idx, col_idx]\n",
+    "print(\"Weight of C.Gayle:\", weight_cgayle)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
